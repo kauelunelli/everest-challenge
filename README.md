@@ -33,7 +33,7 @@ Para que o projeto base rode normalmente, certifique-se de ter:
     ```
       cd everest-challenge
     ```
-  - instale as dependências do sistema usando gerenciador de pacotes do Node `npm` , com o comando:
+  - instale as dependências do sistema usando o gerenciador de pacotes do Node `npm` , com o comando:
     ```
       npm install
     ```

@@ -1,4 +1,4 @@
-<h1 align="center">⛰️ Everest Chalange ⛰️</h1>
+<h1 align="center">⛰️ Everest Challenge ⛰️</h1>
 
 ## Missão :beginner:	
 

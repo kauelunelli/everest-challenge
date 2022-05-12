@@ -24,10 +24,12 @@ Para que o projeto base rode normalmente, certifique-se de ter:
   - o Git, para poder clonar esse repositório em sua máquina, se não tiver, clique <a href="https://nodejs.org/en/download/">aqui</a> e faça o download;
 
 ## Subindo o projeto :rocket:
+  - antes dos próximos passos, você precisa dar um fork nesse repositório; caso ainda não saiba como realizar essa ação basta conferir essa documentação: https://docs.github.com/pt/get-started/quickstart/fork-a-repo;
+  <br><br>PS: só avance para a próxima etapa após "forkar" esse repo;
 
-  - em seu computador, abra um terminal dentro do seu workspace, e insira o comando abaixo para clonar esse repostório:
+  - em seu computador, abra um terminal dentro do seu workspace Warren, e clone o repositório que foi criado automaticamente quando você realizou o fork; ex:
     ```
-      git clone https://github.com/dinobergue-viana/Dinobergue-Viana-vue-desafio.git
+      git clone https://github.com/seu-usuario-github/seu-repositorio.git
     ```
   - navegue até a pasta que foi criada (everest-challenge):
     ```

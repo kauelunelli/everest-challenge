@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import CreateCustomer from '../views/CreateCustomer.vue'
-import CustomerDetails from '../views/CustomerDetails.vue'
+import CreateUser from '../views/CreateUser.vue'
+import UserDetails from '../views/UserDetails.vue'
 
 Vue.use(VueRouter)
 
@@ -15,12 +15,12 @@ const routes = [
   {
     path: '/register',
     name: 'register',
-    component: CreateCustomer
+    component: CreateUser
   },
   {
-    path: '/customer/:id',
-    name: 'customerDetails',
-    component: CustomerDetails
+    path: '/users/:id',
+    name: 'userDetails',
+    component: UserDetails
   }
 ]
 

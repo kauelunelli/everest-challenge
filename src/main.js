@@ -5,32 +5,32 @@ import { createServer, Model } from 'miragejs'
 
 createServer({
   models: {
-    customer: Model
+    user: Model
   },
   seeds(server) {
-    server.create("customer", { name: "Xiquinha", lastname: "Gonzaga", state: "RJ", city: "Rio de Janeiro", phone: "80986882515", email: "xgonzaga@mail.com" })
-    server.create("customer", { name: "Augustin", lastname: "Barrios", state: "SP", city: "São Paulo", phone: "86986882519", email: "abarrios@mail.com" })
-    server.create("customer", { name: "Heitor", lastname: "Villa Lobos", state: "RJ", city: "Rio de Janeiro", phone: "80986882515", email: "hvlobos@mail.com" })
+    server.create("user", { fullname: "Ciquinha Gonzaga", cpf: "56717034092", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Augustin Barrios", cpf: "35383938001", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Heitor Villa-Lobos", cpf: "93525294050", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
   },
   routes() {
     this.namespace = 'api'
     
-    this.get('/customers', (schema, request) => {
-      return schema.customers.all()
+    this.get('/users', (schema, request) => {
+      return schema.users.all()
     }, { timing: 2000 } )
 
-    this.post('/customers', (schema, request) => {
-      let customer = JSON.parse(request.requestBody)
+    this.post('/users', (schema, request) => {
+      let user = JSON.parse(request.requestBody)
 
-      return schema.customers.create(customer)
+      return schema.users.create(user)
     })
 
-    this.get('/customer/:id', (schema, request) => {
+    this.get('/users/:id', (schema, request) => {
       let data = JSON.parse(request.requestBody)
       let id = request.params.id
-      let customer = schema.customers.find(id)
+      let user = schema.users.find(id)
 
-      return customer.update(data)
+      return user.update(data)
     }, { timing: 2000 })
   }
 })

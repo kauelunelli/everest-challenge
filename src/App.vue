@@ -8,11 +8,12 @@
 </template>
 
 <script>
-import Home from './views/Home.vue'
+import axios from "axios"
 export default {
   name: 'App',
-  components: {
-    Home
+  async created() {
+    const response = await axios.get("/api/users")
+    console.log(response)
   }
 }
 </script>

@@ -14,7 +14,7 @@ const routes = [
   },
   {
     path: '/register',
-    name: 'register',
+    name: 'cadastro',
     component: CreateUser
   },
   {

@@ -1,14 +1,28 @@
 <template>
   <header>
     <div class="title">
-      <span>Clientes</span>
+      <span>{{ getTitle }}</span>
     </div>
   </header>
 </template>
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  data() {
+    return {
+      headerTitle: "Teste"
+    }
+  },
+  computed: {
+    getTitle() {
+      let title = "Usuários"
+      if (this.$route.path === "/register") {
+        title = "Cadastro"
+      } 
+      return title
+    }
+  }
 }
 </script>
 

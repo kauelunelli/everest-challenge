@@ -1,16 +1,25 @@
 <template>
   <div>
-    <!-- TODO -->
+    <h1>Lista de Usuários</h1>
+    <div class="btn-container">
+      <button type="button" @click="register">Cadastrar</button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home'
-  // TODO
+  name: 'Home',
+  methods: {
+    register() {
+      this.$router.push({ path: "/register" })
+    }
+  }
 }
 </script>
 
 <style scoped>
-/* TODO */
+.btn-container {
+  text-align: center;
+}
 </style>

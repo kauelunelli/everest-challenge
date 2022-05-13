@@ -10,6 +10,11 @@ import Header from "./components/Header.vue"
 
 export default {
   name: 'App',
+  data() {
+    return {
+      headerTitle: "Usuários"
+    }
+  },
   components: {
     Header
   }
@@ -22,9 +27,5 @@ export default {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-}
-
-#app h1 {
-  text-align: center;
 }
 </style>

@@ -3,6 +3,9 @@ import App from './App.vue'
 import router from './router'
 import { createServer, Model } from 'miragejs'
 
+import VueMask from 'v-mask';
+Vue.use(VueMask)
+
 createServer({
   models: {
     user: Model

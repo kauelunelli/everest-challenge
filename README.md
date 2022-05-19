@@ -59,7 +59,7 @@ Para que o projeto base rode normalmente, certifique-se de ter:
 O projeto conta com uma API fake, que é "startada" juntamente com o frontend, após o comando `yarn serve`. Para auxiliar nas requisições, o projeto conta com o `axios` que é responsável por fazer as requisições e capturar tudo o que a contece durante esse processo (sucesso ou erro). A rota base do backend é: `/api/users`.
 
 ### Exemplos
-  - `axios.post('/api/users')`: cria um novo registro de usuário no banco de dados da api;
+  - `axios.post('/api/users', data)`: cria um novo registro de usuário no banco de dados da api;
   - `axios.get('/api/users')`: irá buscar por todos os usuários cadastrados no banco de dados da api;
   - `axios.get('/api/users/:id')`: busca por um único usuário no banco de dados da api; muito usado para ver detalhes de um usuário, por exemplo;
 

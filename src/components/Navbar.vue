@@ -1,12 +1,12 @@
 <template>
-  <header>
+  <div class="nav-container">
     <!-- TODO -->
-  </header>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Navbar',
 }
 </script>
 

@@ -1,12 +1,16 @@
 <template>
   <div id="app">
-    <Header />
-    <router-view/>
+    <!-- aqui deve ir o Header -->
+    <!-- aqui deve ir a navbar -->
+    <div class="view-container">
+      <router-view/>
+    </div>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue"
+import Navbar from "./components/Navbar.vue"
 
 export default {
   name: 'App',
@@ -16,20 +20,18 @@ export default {
     }
   },
   components: {
-    Header
+    Header,
+    Navbar
   }
 }
 </script>
 
 <style>
+/* SINTA-SE A VONTADE PARA ALTERAR ESSAS ESTILIZAÇÕES BASICAS */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-}
-
-button:hover {
-  cursor: pointer;
 }
 </style>

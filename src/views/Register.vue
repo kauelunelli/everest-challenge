@@ -1,12 +1,12 @@
 <template>
-  <header>
+  <div class="form-container">
     <!-- TODO -->
-  </header>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Register',
 }
 </script>
 

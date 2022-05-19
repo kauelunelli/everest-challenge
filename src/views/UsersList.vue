@@ -1,12 +1,13 @@
 <template>
-  <header>
+  <div>
     <!-- TODO -->
-  </header>
+  </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  name: 'Header'
+  name: 'UsersList'
 }
 </script>
 

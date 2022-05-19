@@ -1,31 +1,37 @@
 <template>
   <div id="app">
-    <!-- remover o trecho abaixo (somente a linha 4) -->
-    <h1> ⛰️ Bem-Vindo(a) ao Everest Challenge! ⛰️</h1>
-    <!-- a tag abaixo é responsável por renderizar as páginas da aplicação; não remover -->
-    <router-view/>
+    <!-- aqui deve ir o Header -->
+    <!-- aqui deve ir a navbar -->
+    <div class="view-container">
+      <router-view/>
+    </div>
   </div>
 </template>
 
 <script>
-import axios from "axios"
+import Header from "./components/Header.vue"
+import Navbar from "./components/Navbar.vue"
+
 export default {
   name: 'App',
-  async created() {
-    const response = await axios.get("/api/users")
-    console.log(response)
+  data() {
+    return {
+      headerTitle: "Usuários"
+    }
+  },
+  components: {
+    Header,
+    Navbar
   }
 }
 </script>
 
 <style>
+/* SINTA-SE A VONTADE PARA ALTERAR ESSAS ESTILIZAÇÕES BASICAS */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-#app h1 {
-  text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 </style>

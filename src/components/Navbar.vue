@@ -1,16 +1,13 @@
 <template>
-  <div>
+  <div class="nav-container">
     <!-- TODO -->
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home'
-  // TODO
+  name: 'Navbar',
 }
 </script>
 
-<style scoped>
-/* TODO */
-</style>
+<style scoped></style>

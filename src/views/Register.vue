@@ -1,15 +1,13 @@
 <template>
-  <div>
+  <div class="form-container">
     <!-- TODO -->
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Footer'
+  name: 'Register',
 }
 </script>
 
-<style scoped>
-/* TODO */
-</style>
+<style scoped></style>

@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <header>
     <!-- TODO -->
-  </div>
+  </header>
 </template>
 
 <script>
@@ -10,6 +10,4 @@ export default {
 }
 </script>
 
-<style scoped>
-/* TODO */
-</style>
+<style scoped></style>

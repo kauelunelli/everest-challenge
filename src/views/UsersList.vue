@@ -5,12 +5,10 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  name: 'CreateUser'
-  // TODO
+  name: 'UsersList'
 }
 </script>
 
-<style scoped>
-/* TODO */
-</style>
+<style scoped></style>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <!-- aqui deve ir o Header -->
-    <!-- aqui deve ir a navbar -->
+    <Header/>
+    <Navbar/>
     <div class="view-container">
       <router-view/>
     </div>
@@ -9,8 +9,10 @@
 </template>
 
 <script>
-import Header from "./components/Header.vue"
 import Navbar from "./components/Navbar.vue"
+import Header from "./components/Header.vue"
+
+
 
 export default {
   name: 'App',
@@ -21,8 +23,9 @@ export default {
   },
   components: {
     Header,
-    Navbar
-  }
+    Navbar,
+
+}
 }
 </script>
 
@@ -33,5 +36,15 @@ export default {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+}
+
+.view-container{
+  display: flex;
+  align-content: center;
+  border: 1px solid red;
+  margin: auto;
+  max-width: 800px;
+  height: auto;
+
 }
 </style>

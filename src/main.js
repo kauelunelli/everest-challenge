@@ -20,7 +20,7 @@ createServer({
     
     this.get('/users', (schema, request) => {
       return schema.users.all()
-    }, { timing: 2000 } )
+    }, { timing: 1000 } )
 
     this.post('/users', (schema, request) => {
       let user = JSON.parse(request.requestBody)

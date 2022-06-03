@@ -1,6 +1,6 @@
 <template>
   <div class="form-container">
-    <!-- TODO -->
+    <p>registrrtkk</p>
   </div>
 </template>
 

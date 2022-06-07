@@ -39,12 +39,8 @@ export default {
 }
 
 .view-container{
-  display: flex;
-  align-content: center;
-  border: 1px solid red;
   margin: auto;
-  max-width: 800px;
-  height: auto;
+  max-width: 1000px;
 
 }
 </style>

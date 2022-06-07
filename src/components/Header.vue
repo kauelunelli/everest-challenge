@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar-container">
+  <div class="header-container">
       <a class="return" @click.prevent="returnSteps()" href="#">
         <svg
           width="50"
@@ -13,7 +13,9 @@
           />
         </svg>
       </a>
-      <p class="text-p">Cadastro</p>
+      <div class="text-center">
+        <p class="text-p">Cadastro</p>
+      </div>
   </div>
 </template>
 
@@ -25,9 +27,21 @@ export default {
 
 <style scoped>
 
-.navbar-container {
-  background-color: #d81040;
+.header-container {
+  background: #e02b57;
   padding-top: 1rem;
   padding-bottom: 1rem;
+
+}
+
+.text-center{
+
+
+  display: flex;
+  justify-content: center;
+}
+
+.text-p{
+  float: left;
 }
 </style>

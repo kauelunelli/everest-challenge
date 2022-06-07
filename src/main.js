@@ -11,9 +11,15 @@ createServer({
     user: Model
   },
   seeds(server) {
-    server.create("user", { fullname: "Ciquinha Gonzaga", cpf: "56717034092", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
-    server.create("user", { fullname: "Augustin Barrios", cpf: "35383938001", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
-    server.create("user", { fullname: "Heitor Villa-Lobos", cpf: "93525294050", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
+    server.create("user", { fullname: "Ciquinha Gonzaga", cpf: "567.170.340-92", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Augustin Barrios", cpf: "353.839.380-01", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Heitor Villa-Lobos", cpf: "935.252.940-50", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
+    server.create("user", { fullname: "Ciquinha Gonzaga", cpf: "567.170.340-92", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Augustin Barrios", cpf: "353.839.380-01", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Heitor Villa-Lobos", cpf: "935.252.940-50", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
+    server.create("user", { fullname: "Ciquinha Gonzaga", cpf: "567.170.340-92", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { fullname: "Augustin Barrios", cpf: "353.839.380-01", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { fullname: "Heitor Villa-Lobos", cpf: "935.252.940-50", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
   },
   routes() {
     this.namespace = 'api'

@@ -14,7 +14,7 @@
         </svg>
       </a>
       <div class="text-center">
-        <p class="text-p">Cadastro</p>
+        <p class="text-p">CADASTRO DE USUÁRIO</p>
       </div>
   </div>
 </template>
@@ -31,17 +31,21 @@ export default {
   background: #e02b57;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 
 }
 
 .text-center{
-
-
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .text-p{
-  float: left;
+  color: white;
+  font-weight: bolder;
+  font-size: 14px;
+  opacity: 70%;
 }
 </style>

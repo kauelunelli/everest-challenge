@@ -1,28 +1,31 @@
 <template>
   <div>
     <div class="button-container">
-      <button class="btn">Cadastrar novo usuario</button>
-    </div>
-    <table class="list">
-      <tr id="title-tr">
-        <th>CPF</th>
-        <th>NOME COMPLETO</th>
-      </tr>
-      <tr v-for="user in users">
-        <td>{{ user.cpf }}</td>
-        <td>{{ user.fullname }}</td>
-        <td id="td-eye"><a @click="showModal()"><img :src="eyeSVG" alt=""></a></td>
-      </tr>
-    </table>
-    <div class="pagination-container">
-      <a href="">1</a>
-      <a href="">2</a>
-      <a href="">3</a>
-      <a href="">4</a>
+      <button class="btn">Cadastrar novo usuario</button> </div>
+      <div class="table">
+        <div class="container-title">
+          <p>CPF</p>
+          <p>Nome Completo</p>
+        </div>
+        <div class="container-list" v-for="(user, index) in dataTable" :key="index">
+            <p>{{ user.cpf }}</p>
+            <p>{{ user.fullname }}</p>
+          <div class="container-svg">
+            <a @click="showModal()"><img :src="eyeSVG"></a>
+          </div>
+        </div>
+            <div class="container-list-empty" v-if="checkList">
+                <img :src="lupaSVG" alt="">
+                <p>Não tem nada aqui por enquanto</p>
+            </div>
 
-    
-    </div>
-  </div>
+          <div class="pagination-container">
+            <span  v-for="(user, index) in pagination.totalPages" :key="user.cpf" @click="goNextPage(index + 1)">{{ index + 1 }}</span>
+
+          </div>
+        </div>
+      </div>
+  
 </template>
 
 <script>
@@ -38,19 +41,54 @@ export default {
   data() {
     return {
       users: [],
+      pagination: {
+        currentPage: 0,
+        totalPages: 0,
+      },
+      dataTable: [],
       eyeSVG: require("../assets/details-eye.svg"),
+      lupaSVG: require("../assets/lupa.svg")
     };
   },
 
   created() {
     axios.get("/api/users").then((res) => {
       this.users = res.data.users;
+      this.paginate(1, this.users.length)
     });
+  },
+  computed: {
+    checkList(){
+      if(this.users.length == 0){
+        return true
+      }
+        
+    }
   },
   methods: {
     showModal() {
       console.log('Foi kkk')
+    },
+
+    paginate(currentPage, totalUsers) {
+    this.pagination = {
+      currentPage,
+      totalPages: Math.ceil(totalUsers / 7),
     }
+    this.generateDataTable(this.pagination.currentPage)
+  },
+
+  generateDataTable(currentPage) {
+    this.dataTable = this.users.slice(
+      (currentPage - 1) * 7,
+      currentPage * 7
+    )
+  },
+
+  goNextPage(pageNumber){
+    console.log(pageNumber)
+    this.paginate(pageNumber, this.users.length)
+  } 
     
   }
  
@@ -59,21 +97,53 @@ export default {
 </script>
 
 <style scoped>
+
+.table{
+  border-bottom: 1px solid #b9b5b5;
+  border-top: 1px solid #b9b5b5;
+}
+
+.container-title{
+  font-weight: bold;
+  font-size: 18px;
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  grid-template-rows: 4vh;
+  padding: 10px;
+  align-items: center;
+  border-bottom: 1px solid #b9b5b5;
+}
+
+.container-list{
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  grid-template-rows: 5vh;
+  align-items: center;
+  padding: 10px;
+}
+
+.container-svg{
+  text-align: end;
+}
+
+.container-list-empty{
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  justify-items: center;
+  margin: 30px;
+}
+
+
 .button-container {
   text-align: end;
 }
 
-.list {
-  border-top: 1px solid #b9b5b5;
-  border-bottom: 1px solid #b9b5b5;
-  border-collapse: collapse;
-  width: 100%;
-}
+
 
 .btn {
   margin: 40px;
-  font-family: "Source Sans Pro", sans-serif;
-  padding: 20px 24px;
+  padding: 20px 40px;
   font-size: 18px;
   text-decoration: none;
   color: white;
@@ -91,24 +161,6 @@ export default {
   transform: scale(0.985);
 }
 
-#title-tr,
-th {
-  border-bottom: 1px solid#b9b5b5;
-  font-weight: 600;
-  font-size: 16px;
-}
-
-.list td,
-.list th {
-  padding: 20px;
-}
-
-.list th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-}
-
 #td-eye {
   text-align: end;
   padding: 20px;
@@ -116,14 +168,16 @@ th {
 
 .pagination-container{
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  justify-content: center;
   padding: 0px;
   gap: 12px;
+  height: 34px;
+  
 
-position: relative;
-width: 323px;
-height: 34px;
+}
+
+.pagination-container:hover{
+  cursor: pointer;
 
 }
 </style>

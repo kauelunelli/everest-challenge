@@ -14,15 +14,14 @@
             <a @click="showModal(user.id)"><img :src="eyeSVG"></a>
           </div>
         </div>
-            <div class="container-list-empty" v-if="isUsersListEmpty">
-
+            <div class="container-list-empty" v-if="arrayNull">
+                <img :src='lupaSVG'>
                 <p>Não tem nada aqui por enquanto</p>
             </div>
-
+        </div>
           <div class="pagination-container">
             <span  v-for="(user, index) in pagination.totalPages" :key="user.id" @click="goNextPage(index + 1)">{{ index + 1 }}</span>
           </div>
-        </div>
       </div>
   
 </template>
@@ -46,7 +45,8 @@ export default {
       },
       dataTable: [],
       eyeSVG: require("../assets/details-eye.svg"),
-      lupaSVG: require("../assets/lupa.svg")
+      lupaSVG: require("../assets/lupa.svg"),
+      arrayNull: false
     };
   },
 
@@ -54,16 +54,11 @@ export default {
     axios.get("/api/users").then((res) => {
       this.users = res.data.users;
       this.paginate(1, this.users.length)
+      if(this.users.length == 0)
+        this.arrayNull = true
     });
   },
-  computed: {
-    isUsersListEmpty(){
-      if(this.users.length == 0){
-        return true
-      }
-        
-    }
-  },
+
   methods: {
     showModal(id) {
       console.log(id)

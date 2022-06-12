@@ -11,17 +11,16 @@
             <p>{{ user.cpf }}</p>
             <p>{{ user.fullname }}</p>
           <div class="container-svg">
-            <a @click="showModal()"><img :src="eyeSVG"></a>
+            <a @click="showModal(user.id)"><img :src="eyeSVG"></a>
           </div>
         </div>
-            <div class="container-list-empty" v-if="checkList">
-                <img :src="lupaSVG" alt="">
+            <div class="container-list-empty" v-if="isUsersListEmpty">
+
                 <p>Não tem nada aqui por enquanto</p>
             </div>
 
           <div class="pagination-container">
-            <span  v-for="(user, index) in pagination.totalPages" :key="user.cpf" @click="goNextPage(index + 1)">{{ index + 1 }}</span>
-
+            <span  v-for="(user, index) in pagination.totalPages" :key="user.id" @click="goNextPage(index + 1)">{{ index + 1 }}</span>
           </div>
         </div>
       </div>
@@ -58,7 +57,7 @@ export default {
     });
   },
   computed: {
-    checkList(){
+    isUsersListEmpty(){
       if(this.users.length == 0){
         return true
       }
@@ -66,8 +65,8 @@ export default {
     }
   },
   methods: {
-    showModal() {
-      console.log('Foi kkk')
+    showModal(id) {
+      console.log(id)
     },
 
     paginate(currentPage, totalUsers) {

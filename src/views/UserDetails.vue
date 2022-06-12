@@ -6,9 +6,9 @@
 
 <script>
 export default {
-  name: 'UserDetails'
+  name: "UserDetails",
   // TODO
-}
+};
 </script>
 
 <style scoped>

@@ -1,40 +1,46 @@
 <template>
   <div>
     <div class="button-container">
-      <button class="btn">Cadastrar novo usuario</button> </div>
-      <div class="table">
-        <div class="container-title">
-          <p>CPF</p>
-          <p>Nome Completo</p>
-        </div>
-        <div class="container-list" v-for="(user, index) in dataTable" :key="index">
-            <p>{{ user.cpf }}</p>
-            <p>{{ user.fullname }}</p>
-          <div class="container-svg">
-            <a @click="showModal(user.id)"><img :src="eyeSVG"></a>
-          </div>
-        </div>
-            <div class="container-list-empty" v-if="arrayNull">
-                <img :src='lupaSVG'>
-                <p>Não tem nada aqui por enquanto</p>
-            </div>
-        </div>
-          <div class="pagination-container">
-            <span  v-for="(user, index) in pagination.totalPages" :key="user.id" @click="goNextPage(index + 1)">{{ index + 1 }}</span>
-          </div>
+      <button class="btn">Cadastrar novo usuario</button>
+    </div>
+    <div class="table">
+      <div class="container-title">
+        <p>CPF</p>
+        <p>Nome Completo</p>
       </div>
-  
+      <div
+        class="container-list"
+        v-for="(user, index) in dataTable"
+        :key="index"
+      >
+        <p>{{ user.cpf }}</p>
+        <p>{{ user.fullname }}</p>
+        <div class="container-svg">
+          <a @click="showModal(user.id)"><img :src="eyeSVG" /></a>
+        </div>
+      </div>
+      <div class="container-list-empty" v-if="arrayNull">
+        <img :src="lupaSVG" />
+        <p>Não tem nada aqui por enquanto</p>
+      </div>
+    </div>
+    <div class="pagination-container">
+      <span
+        v-for="(user, index) in pagination.totalPages"
+        :key="user.id"
+        @click="goNextPage(index + 1)"
+        >{{ index + 1 }}</span
+      >
+    </div>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
 
-
 export default {
   name: "UsersList",
-  components: {
-
-  },
+  components: {},
 
   data() {
     return {
@@ -46,58 +52,50 @@ export default {
       dataTable: [],
       eyeSVG: require("../assets/details-eye.svg"),
       lupaSVG: require("../assets/lupa.svg"),
-      arrayNull: false
+      arrayNull: false,
     };
   },
 
   created() {
     axios.get("/api/users").then((res) => {
       this.users = res.data.users;
-      this.paginate(1, this.users.length)
-      if(this.users.length == 0)
-        this.arrayNull = true
+      this.paginate(1, this.users.length);
+      if (this.users.length == 0) this.arrayNull = true;
     });
   },
 
   methods: {
     showModal(id) {
-      console.log(id)
+      console.log(id);
     },
 
     paginate(currentPage, totalUsers) {
-    this.pagination = {
-      currentPage,
-      totalPages: Math.ceil(totalUsers / 7),
-    }
-    this.generateDataTable(this.pagination.currentPage)
-  },
+      this.pagination = {
+        currentPage,
+        totalPages: Math.ceil(totalUsers / 7),
+      };
+      this.generateDataTable(this.pagination.currentPage);
+    },
 
-  generateDataTable(currentPage) {
-    this.dataTable = this.users.slice(
-      (currentPage - 1) * 7,
-      currentPage * 7
-    )
-  },
+    generateDataTable(currentPage) {
+      this.dataTable = this.users.slice((currentPage - 1) * 7, currentPage * 7);
+    },
 
-  goNextPage(pageNumber){
-    console.log(pageNumber)
-    this.paginate(pageNumber, this.users.length)
-  } 
-    
-  }
- 
+    goNextPage(pageNumber) {
+      console.log(pageNumber);
+      this.paginate(pageNumber, this.users.length);
+    },
+  },
 };
-
 </script>
 
 <style scoped>
-
-.table{
+.table {
   border-bottom: 1px solid #b9b5b5;
   border-top: 1px solid #b9b5b5;
 }
 
-.container-title{
+.container-title {
   font-weight: bold;
   font-size: 18px;
   display: grid;
@@ -108,7 +106,7 @@ export default {
   border-bottom: 1px solid #b9b5b5;
 }
 
-.container-list{
+.container-list {
   display: grid;
   grid-template-columns: 2fr 2fr 2fr;
   grid-template-rows: 5vh;
@@ -116,11 +114,11 @@ export default {
   padding: 10px;
 }
 
-.container-svg{
+.container-svg {
   text-align: end;
 }
 
-.container-list-empty{
+.container-list-empty {
   display: grid;
   justify-content: center;
   text-align: center;
@@ -128,12 +126,9 @@ export default {
   margin: 30px;
 }
 
-
 .button-container {
   text-align: end;
 }
-
-
 
 .btn {
   margin: 40px;
@@ -160,18 +155,15 @@ export default {
   padding: 20px;
 }
 
-.pagination-container{
+.pagination-container {
   display: flex;
   justify-content: center;
   padding: 0px;
   gap: 12px;
   height: 34px;
-  
-
 }
 
-.pagination-container:hover{
+.pagination-container:hover {
   cursor: pointer;
-
 }
 </style>

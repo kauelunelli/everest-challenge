@@ -20,6 +20,15 @@ createServer({
     server.create("user", { id: 7, fullname: "Ciquinha Gonzaga", cpf: "960.685.600-31", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
     server.create("user", { id: 8, fullname: "Augustin Barrios", cpf: "039.036.590-45", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
     server.create("user", { id: 9, fullname: "Heitor Villa-Lobos", cpf: "565.674.820-01", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
+    server.create("user", { id: 10, fullname: "Ciquinha Gonzaga", cpf: "567.170.340-93", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { id: 11, fullname: "Augustin Barrios", cpf: "353.839.380-01", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { id: 12, fullname: "Heitor Villa-Lobos", cpf: "935.252.940-56", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
+    server.create("user", { id: 13, fullname: "Ciquinha Gonzaga", cpf: "279.638.260-57", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { id: 14, fullname: "Augustin Barrios", cpf: "149.388.400-06", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { id: 15, fullname: "Heitor Villa-Lobos", cpf: "755.041.660-55", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
+    server.create("user", { id: 16, fullname: "Ciquinha Gonzaga", cpf: "960.685.600-31", phone: "80986882515", email: "xgonzaga@mail.com", confirmEmail: "xgonzaga@mail.com", birthDate: "1847-10-17" })
+    server.create("user", { id: 17, fullname: "Augustin Barrios", cpf: "039.036.590-45", phone: "86986882519", email: "abarrios@mail.com", confirmEmail: "abarrios@mail.com", birthDate: "1885-05-05" })
+    server.create("user", { id: 18, fullname: "Heitor Villa-Lobos", cpf: "565.674.820-01", phone: "80986882515", email: "hvlobos@mail.com", confirmEmail: "hvlobos@mail.com", birthDate: "1887-03-05" })
   },
   routes() {
     this.namespace = 'api'

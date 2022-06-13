@@ -25,9 +25,9 @@
       </div>
     </div>
     <div class="pagination-container">
-      <span
+      <span class="pagination-button"
         v-for="(user, index) in pagination.totalPages"
-        :key="user.id"
+        :key="user.id" 
         @click="goNextPage(index + 1)"
         >{{ index + 1 }}</span
       >
@@ -85,6 +85,7 @@ export default {
       console.log(pageNumber);
       this.paginate(pageNumber, this.users.length);
     },
+
   },
 };
 </script>
@@ -158,12 +159,31 @@ export default {
 .pagination-container {
   display: flex;
   justify-content: center;
-  padding: 0px;
   gap: 12px;
-  height: 34px;
+  padding: 20px;
+  width: 100%
+
 }
+
+.pagination-button{
+  font-size: 18px;
+  padding: 10px;
+  width: 30px;
+  font-weight: 400;
+
+}
+
+.pagination-button:hover {
+  background: #E3E4EB;
+  border-radius: 4px;
+  font-weight: 600;
+
+}
+
 
 .pagination-container:hover {
   cursor: pointer;
 }
+
+
 </style>

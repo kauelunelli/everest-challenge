@@ -13,7 +13,7 @@
         v-for="(user, index) in dataTable"
         :key="index"
       >
-        <p>{{ user.cpf }}</p>
+        <p>{{ formatCpf(user.cpf) }}</p>
         <p>{{ user.fullname }}</p>
         <div class="container-svg">
           <a @click="showModal(user.id)"><img :src="eyeSVG" /></a>
@@ -25,12 +25,14 @@
       </div>
     </div>
     <div class="pagination-container">
+      <img class="pagination-button" :src="arrowLeftSVG" @click='returnPage()'>
       <span class="pagination-button"
         v-for="(user, index) in pagination.totalPages"
         :key="user.id" 
-        @click="goNextPage(index + 1)"
+        @click="changePage(index + 1)"
         >{{ index + 1 }}</span
       >
+      <img class="pagination-button" :src="arrowRightSVG" @click='goNextPage()'>
     </div>
   </div>
 </template>
@@ -52,6 +54,8 @@ export default {
       dataTable: [],
       eyeSVG: require("../assets/details-eye.svg"),
       lupaSVG: require("../assets/lupa.svg"),
+      arrowLeftSVG: require("../assets/arrow-left.svg"),
+      arrowRightSVG: require("../assets/arrow-right.svg"),
       arrayNull: false,
     };
   },
@@ -69,6 +73,10 @@ export default {
       console.log(id);
     },
 
+    formatCpf(cpf) {
+       return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
+    },
+
     paginate(currentPage, totalUsers) {
       this.pagination = {
         currentPage,
@@ -81,10 +89,21 @@ export default {
       this.dataTable = this.users.slice((currentPage - 1) * 7, currentPage * 7);
     },
 
-    goNextPage(pageNumber) {
+    changePage(pageNumber) {
       console.log(pageNumber);
       this.paginate(pageNumber, this.users.length);
     },
+
+    returnPage() {
+      if( this.pagination.currentPage > 1)
+        this.paginate(this.pagination.currentPage -1, this.users.length)
+    },
+
+    goNextPage() {
+      if( this.pagination.currentPage < this.pagination.totalPages)
+        this.paginate(this.pagination.currentPage +1, this.users.length)
+    }
+
 
   },
 };

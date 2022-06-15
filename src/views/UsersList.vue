@@ -20,8 +20,8 @@
         </div>
       </div>
       <div class="container-list-empty" v-if="arrayNull">
-        <img :src="lupaSVG" />
-        <p>Não tem nada aqui por enquanto</p>
+        <img :src="wumpusSVG" />
+        <p id="margin-10">Não tem nada aqui por enquanto, adicione usuarios.</p>
       </div>
     </div>
     <div class="pagination-container">
@@ -53,7 +53,7 @@ export default {
       },
       dataTable: [],
       eyeSVG: require("../assets/details-eye.svg"),
-      lupaSVG: require("../assets/lupa.svg"),
+      wumpusSVG: require("../assets/lista-vazia-wumpus.svg"),
       arrowLeftSVG: require("../assets/arrow-left.svg"),
       arrowRightSVG: require("../assets/arrow-right.svg"),
       arrayNull: false,
@@ -202,6 +202,10 @@ export default {
 
 .pagination-container:hover {
   cursor: pointer;
+}
+
+#margin-10{
+  margin: 10px;
 }
 
 

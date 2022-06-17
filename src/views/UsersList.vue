@@ -28,7 +28,7 @@
       <img class="pagination-button" :src="arrowLeftSVG" @click='returnPage()'>
       <span class="pagination-button"
         v-for="(user, index) in pagination.totalPages"
-        :key="user.id" 
+        :key="user.id" :class="{'active' : pagination.currentPage == index + 1}"
         @click="changePage(index + 1)"
         >{{ index + 1 }}</span
       >
@@ -133,6 +133,14 @@ export default {
   align-items: center;
   padding: 10px;
 }
+
+.active {
+  color: white;
+  border-radius: 4px;
+  font-weight: 400 !important;
+  background: black !important;
+}
+
 
 .container-svg {
   text-align: end;

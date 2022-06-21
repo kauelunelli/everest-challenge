@@ -71,6 +71,8 @@ export default {
   methods: {
     showModal(id) {
       console.log(id);
+      this.$router.push("/users/" + id)
+
     },
 
     formatCpf(cpf) {

@@ -3,7 +3,7 @@
     <div class="modal-container">
       <div class="modal-title">
         <h1 class="text-h1">Detalhes do usuário</h1>
-        <h3>X</h3>
+        <a @click="returnPage()"><img :src="xMark" /></a>
       </div>
       <div class='modal-content'>
         <div class="inputs-form">
@@ -19,8 +19,13 @@
               <p class="text-p-bold">{{ user.fullname }}</p>
         </div>
         <div class="inputs-form">
-              <p class="text-p">Contato</p>
-              <p class="text-p-bold">{{ user.contact }}</p>
+              <div class='contact-container' v-if='contactIsEmail()'>
+
+                <p>Email ou SMS</p>
+              </div>
+              <div class='contact-container' v-else>
+                <p>Whatsapp</p>
+              </div>
         </div>
         <div class="inputs-form">
               <p class="text-p">Nascimento</p>
@@ -46,7 +51,8 @@ export default {
 
   data() {
     return{
-      user: []
+      user: [],
+      xMark: require("../assets/xmark-solid.svg"),
     }
   },
   
@@ -55,56 +61,21 @@ export default {
     axios.get('/api/users/' + this.$route.params.id).then((res) => {
       this.user = res.data.user;
     });
-}
+},
+
+  methods: {
+    returnPage(){
+      this.$router.push("/");
+    },
+
+    contactIsEmail() {
+      if(this.user.contact == "email") {
+           return true;
+      } else {
+          return false;
+      }
+     },
+  }
 }
 </script>
 
-<style scoped>
-
-.modal{
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(58, 56, 56, 0.5);
-}
-
-.modal-container{
-  max-width: 60vh;
-  width: 100%;
-  border-radius: 10px;
-  background-color: white;
-}
-
-.modal-title {
-  display: grid;
-  padding: 20px;
-  text-align: center;
-  grid-template-columns: 90% 10%;
-
-}
-
-.modal-content{
-  border: 2px dashed rgb(219, 213, 213);
-  padding: 60px;
-  margin: 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.inputs-form{
-  padding-top: 20px;
-}
-
-.text-p-bold {
-  font-size: 18px;
-  line-height: 24px;
-  font-weight: bold;
-}
-
-
-</style>

@@ -49,7 +49,7 @@ createServer({
       let user = schema.users.find(id)
 
       return user.update(data)
-    }, { timing: 2000 } )
+    }, { timing: 1000 } )
   }
 })
 

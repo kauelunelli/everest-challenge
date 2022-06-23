@@ -17,7 +17,7 @@
         v-for="(user, index) in dataTable"
         :key="index"
       >
-        <p>{{ formatCpf(user.cpf) }}</p>
+        <p>{{ user.cpf | maskCpf }}</p>
         <p>{{ user.fullname }}</p>
         <div class="container-svg">
           <a @click="showModal(user.id)"><img :src="eyeSVG" /></a>
@@ -90,6 +90,12 @@ export default {
     });
   },
 
+  filters: {
+    maskCpf(cpf) {
+      return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    },
+  },
+
   methods: {
     showModal(id) {
       console.log(id);
@@ -107,10 +113,6 @@ export default {
 
     closeModal() {
       this.showDetails = false;
-    },
-
-    formatCpf(cpf) {
-      return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
     },
 
     paginate(currentPage, totalUsers) {

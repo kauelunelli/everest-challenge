@@ -1,48 +1,42 @@
 <template>
-  <div class="modal">
-    <div class="modal-container">
+  <div class="modal" @click='closeModal()'>
+    <div class="modal-container" @click.stop>
       <div class="modal-title">
         <h3>Detalhes do usuário</h3>
         <a @click="closeModal()"><img :src="xMarkSVG" /></a>
       </div>
-      <div class='modal-content'>
+      <div class="modal-content">
         <div class="inputs-form">
-              <p>CPF</p>
-              <p class="text-p-bold">{{ user.cpf | maskCpf }}</p>
+          <p>CPF</p>
+          <p class="text-p-bold">{{ user.cpf | maskCpf }}</p>
         </div>
         <div class="inputs-form">
-              <p>Celular</p>
-              <p class="text-p-bold">{{ user.phone | maskPhone }}</p>
+          <p>Celular</p>
+          <p class="text-p-bold">{{ user.phone | maskPhone }}</p>
         </div>
         <div class="inputs-form">
-              <p class="text-p">Nome Completo</p>
-              <p class="text-p-bold">{{ user.fullname }}</p>
+          <p class="text-p">Nome Completo</p>
+          <p class="text-p-bold">{{ user.fullname }}</p>
         </div>
         <div class="inputs-form">
           <p>Contato</p>
-              <div class='contact-container' v-if='contactIsEmail()'>
-                <img :src="emailSVG"/>
-                <p class="text-p-bold" id="margin-left">Email ou SMS</p>
-              </div>
-              <div class='contact-container' v-else>
-                <img :src="whatsappSVG"/>
-                <p class="text-p-bold" id="margin-left">Whatsapp</p>
-              </div>
+          <div class="contact-container">
+            <img :src="selectImage()" />
+            <p class="text-p-bold" id="margin-left">
+              {{ user.contact | maskContact }}
+            </p>
+          </div>
         </div>
         <div class="inputs-form">
-              <p>Nascimento</p>
-              <p class="text-p-bold">{{ user.birthDate}}</p>
+          <p>Nascimento</p>
+          <p class="text-p-bold">{{ user.birthDate | maskDate }}</p>
         </div>
         <div class="inputs-form">
-              <p>Email</p>
-              <p class="text-p-bold">{{ user.email }}</p>
+          <p>Email</p>
+          <p class="text-p-bold">{{ user.email }}</p>
         </div>
-
       </div>
-
-
     </div>
-    
   </div>
 </template>
 
@@ -53,54 +47,55 @@ export default {
   props: {
     user: {
       type: Object,
-      required: true
-
-    }
+      required: true,
+    },
   },
 
   data() {
-    return{
+    return {
       xMarkSVG: require("../assets/xmark-solid.svg"),
-      whatsappSVG: require('../assets/whatsapp.svg'),
-      emailSVG: require('../assets/email.svg'),
-    }
+      whatsappSVG: require("../assets/whatsapp.svg"),
+      emailSVG: require("../assets/email.svg"),
+    };
   },
 
   filters: {
-    maskCpf: function(cpf) {
-      return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
-      
-    },
-    
-    maskPhone: function(phone) {
-      return phone.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3")
+    maskCpf(cpf) {
+      return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
     },
 
+    maskPhone(phone) {
+      return phone.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+    },
+
+    maskDate(date) {
+      const dateFormat = date.split("-");
+      return ` ${dateFormat[2]}/${dateFormat[1]}/${dateFormat[0]} `;
+    },
+    maskContact(contact) {
+      contact = contact.toString();
+      return contact.charAt(0).toUpperCase() + contact.slice(1);
+    },
   },
 
-
-
-   methods: {
-    closeModal(){
-      this.$emit('closeDetails');
+  methods: {
+    closeModal() {
+      this.$emit("closeDetails");
     },
 
-    contactIsEmail() {
-      if(this.user.contact == "email") {
-           return true;
+    selectImage() {
+      if (this.user.contact === "email") {
+        return this.emailSVG;
       } else {
-          return false;
+        return this.whatsappSVG;
       }
-     },
-  }
-  
-
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
-
-.modal{
+.modal {
   position: fixed;
   z-index: 9998;
   top: 0;
@@ -113,7 +108,7 @@ export default {
   background-color: rgba(58, 56, 56, 0.5);
 }
 
-.modal-container{
+.modal-container {
   max-width: 65vh;
   width: 100%;
   border-radius: 10px;
@@ -126,17 +121,16 @@ export default {
   text-align: center;
   align-items: center;
   grid-template-columns: 90% 10%;
-
 }
 
-.modal-content{
+.modal-content {
   border: 2px dashed rgb(219, 213, 213);
   padding: 60px;
   margin: 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.inputs-form{
+.inputs-form {
   padding-top: 20px;
 }
 
@@ -146,16 +140,11 @@ export default {
   font-weight: bold;
 }
 
-
-.contact-container{
+.contact-container {
   display: flex;
-
 }
 
-#margin-left{
+#margin-left {
   margin-left: 15px;
 }
-
-
 </style>
-

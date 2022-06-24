@@ -1,9 +1,11 @@
 <template>
-  <div class="modal" @click='closeModal()'>
+  <div class="modal" @click="closeModal()">
     <div class="modal-container" @click.stop>
       <div class="modal-title">
         <h3>Detalhes do usuário</h3>
-        <a @click="closeModal()"><img :src="xMarkSVG" /></a>
+        <div class="modal-button" UM MESTRE DO VUE>
+          <a @click="closeModal()"><img :src="xMarkSVG" /></a>
+        </div>
       </div>
       <div class="modal-content">
         <div class="inputs-form">
@@ -121,6 +123,10 @@ export default {
   text-align: center;
   align-items: center;
   grid-template-columns: 90% 10%;
+}
+
+.modal-button {
+  cursor: pointer;
 }
 
 .modal-content {

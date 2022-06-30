@@ -2,11 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import { createServer, Model } from 'miragejs'
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
 
-
-
-import VueMask from 'v-mask';
-Vue.use(VueMask)
+import Maska from 'maska'
+Vue.use(Maska)
 
 createServer({
   models: {

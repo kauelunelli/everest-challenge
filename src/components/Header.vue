@@ -1,6 +1,6 @@
 <template>
   <div class="header-container">
-    <a class="return" @click.prevent="returnSteps()" href="#">
+    <a class="return" @click.prevent="returnUsersList()" href="#">
       <svg
         width="50"
         height="20"
@@ -22,7 +22,16 @@
 <script>
 export default {
   name: "Header",
+
+  methods: {
+    returnUsersList(){
+      this.$router.push('/')
+    }
+
+  }
 };
+
+
 </script>
 
 <style scoped>

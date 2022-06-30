@@ -126,7 +126,12 @@
         message="Este campo é requerido"
       />
     </div>
-    <button class="btn" @click.prevent="$v.$touch" @click="validateForm()">
+    <button
+      class="btn"
+      @click="$v.$touch"
+      :disabled="submitting"
+      @click.prevent="validateForm()"
+    >
       Salvar
     </button>
   </div>
@@ -137,10 +142,11 @@ import { required, sameAs, email, minLength } from "vuelidate/lib/validators";
 import MessageAlertInput from "@/components/MessageAlertInput.vue";
 import axios from "axios";
 import MessageSucess from "@/components/MessageSuccess.vue";
+import Loader from "@/components/Loader.vue";
 export default {
   name: "Register",
 
-  components: { MessageAlertInput, MessageSucess },
+  components: { MessageAlertInput, MessageSucess, Loader },
 
   data() {
     return {
@@ -154,6 +160,7 @@ export default {
         contact: "",
       },
       showMessageSuccess: false,
+      submitting: false,
     };
   },
   validations: {
@@ -196,11 +203,22 @@ export default {
     },
 
     validateForm() {
+      this.submitting = true;
       if (this.validateCpf() && !this.$v.$error) {
-        axios.post("/api/users", this.form).then((res) => {
-          console.log(res);
-          this.showMessageSuccess = true
-        });
+        axios
+          .post("/api/users", this.form)
+          .then((res) => {
+            console.log(res);
+          })
+          .finally(() => {
+            this.showMessageSuccess = true;
+            this.submitting = false;
+            setTimeout(() => {
+              (this.showMessageSucess = false), this.$router.push("/");
+            }, 2000);
+          });
+      } else {
+        this.submitting = false;
       }
     },
   },

@@ -62,7 +62,6 @@ export default {
 
   methods: {
     showModal(id) {
-      console.log(id);
       this.loading = true;
       axios
         .get("/api/users/" + id)
@@ -81,7 +80,6 @@ export default {
 
     changePage(dataTable) {
       this.dataTable = dataTable;
-      console.log(dataTable);
     },
 
     goRegisterPage() {

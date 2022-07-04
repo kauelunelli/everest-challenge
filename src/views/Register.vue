@@ -126,14 +126,19 @@
         message="Este campo é requerido"
       />
     </div>
-    <button
-      class="btn"
-      @click="$v.$touch"
-      :disabled="submitting"
-      @click.prevent="validateForm()"
-    >
-      Salvar
-    </button>
+    <div class="btn-container">
+      <button
+        class="btn"
+        @click="$v.$touch"
+        :disabled="submitting"
+        @click.prevent="validateForm()"
+      >
+        Salvar
+      </button>
+      <button class="btn" @click="$router.push('/')" id="btn-white">
+        Voltar
+      </button>
+    </div>
   </div>
 </template>
 
@@ -265,6 +270,11 @@ export default {
   grid-area: 1 / 1 / 2 / 3;
 }
 
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+
 .btn {
   cursor: pointer;
   margin: 40px;
@@ -284,6 +294,11 @@ export default {
 
 .btn:active {
   transform: scale(0.985);
+}
+
+#btn-white {
+  background: white;
+  color: #e02b57;
 }
 
 .checkbox {

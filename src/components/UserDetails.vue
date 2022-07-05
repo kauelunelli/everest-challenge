@@ -3,7 +3,7 @@
     <div class="modal-container" @click.stop>
       <div class="modal-title">
         <h3>Detalhes do usuário</h3>
-        <div class="modal-button" UM MESTRE DO VUE>
+        <div class="modal-button">
           <a @click="closeModal()"><img :src="xMarkSVG" /></a>
         </div>
       </div>

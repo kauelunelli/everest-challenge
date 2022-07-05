@@ -1,11 +1,7 @@
 <template>
   <div class="navbar-content">
-    <button class="btn-nav" :disabled="change" @click.prevent="changePage()">
-      CADASTRO
-    </button>
-    <button class="btn-nav" :disabled="!change" @click.prevent="changePage()">
-      LISTAGEM
-    </button>
+    <button class="btn-nav" :disabled="change">CADASTRO</button>
+    <button class="btn-nav" :disabled="!change">LISTAGEM</button>
   </div>
 </template>
 
@@ -19,14 +15,21 @@ export default {
     };
   },
 
+  created() {
+    this.valideRoute();
+  },
+  watch: {
+    "$route.name": function () {
+      this.valideRoute();
+    },
+  },
+
   methods: {
-    changePage() {
-      if (!this.change) {
-        this.change = true;
-        this.$router.push("/register");
-      } else {
+    valideRoute() {
+      if (this.$route.name == "users") {
         this.change = false;
-        this.$router.push("/");
+      } else {
+        this.change = true;
       }
     },
   },

@@ -55,7 +55,6 @@ export default {
     },
 
     changePage(pageNumber) {
-      console.log(pageNumber);
       this.paginate(pageNumber, this.users.length);
     },
 
